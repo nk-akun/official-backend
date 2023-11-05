@@ -9,7 +9,7 @@ namespace KeJian.Core.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    // [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IBaseApplication<User> _application;
@@ -24,6 +24,7 @@ namespace KeJian.Core.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize]
         public async Task<List<User>> GetAsync()
         {
             return await _application.GetAsync();
@@ -35,6 +36,7 @@ namespace KeJian.Core.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<User> GetAsync(int id)
         {
             return await _application.GetAsync(id);
@@ -46,6 +48,7 @@ namespace KeJian.Core.Api.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize]
         public async Task<User> CreateOrUpdateAsync(User input)
         {
             return await _application.CreateOrUpdateAsync(input);
@@ -57,6 +60,7 @@ namespace KeJian.Core.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("{id}")]
+        [Authorize]
         public async Task<bool> DeleteAsync(int id)
         {
             return await _application.DeleteAsync(id);
