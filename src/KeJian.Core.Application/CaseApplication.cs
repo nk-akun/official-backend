@@ -21,10 +21,17 @@ namespace KeJian.Core.Application
 
         public async Task<List<Case>> GetAsync()
         {
-            return await _dbContext.Case
+            var cases = await _dbContext.Case
                 .Where(c => !c.IsDeleted)
                 .OrderByDescending(c => c.CreateTime)
                 .ToListAsync();
+            
+            for (int i = 0; i < cases.Count; i++)
+            {
+                cases[i].Imgs = cases[i].Img.Split(',');
+            }
+
+            return cases;
         }
 
         public async Task<Case> GetAsync(int id)
@@ -32,12 +39,15 @@ namespace KeJian.Core.Application
             var entity = await _dbContext.Case
                 .Where(c => c.Id == id)
                 .FirstOrDefaultAsync();
-
+            
+            entity.Imgs = entity.Img.Split(',');
             return entity;
         }
 
         public async Task<Case> CreateOrUpdateAsync(Case input)
         {
+            string img = string.Join(",", input.Imgs);
+            input.Img = img;
             if (input.Id == 0)
             {
                 input.CreateTime = DateTime.Now;

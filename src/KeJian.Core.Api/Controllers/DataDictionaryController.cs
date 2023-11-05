@@ -33,11 +33,11 @@ namespace KeJian.Core.Api.Controllers
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
-        [HttpPost]
-        public async Task<List<DataDictionary>> GetAsync(List<string> keys)
-        {
-            return await _application.GetAsync(keys);
-        }
+        // [HttpPost]
+        // public async Task<List<DataDictionary>> GetAsync(List<string> keys)
+        // {
+        //     return await _application.GetAsync(keys);
+        // }
 
         /// <summary>
         ///     数据字典详情
@@ -55,7 +55,7 @@ namespace KeJian.Core.Api.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPost]
         [Authorize]
         public async Task<DataDictionary> CreateOrUpdateAsync(DataDictionary input)
         {
@@ -67,7 +67,7 @@ namespace KeJian.Core.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpPost("{id}")]
         [Authorize]
         public async Task<bool> DeleteAsync(int id)
         {

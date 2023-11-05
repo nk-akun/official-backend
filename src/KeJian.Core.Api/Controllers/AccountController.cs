@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using KeJian.Core.Application.Interface;
 using KeJian.Core.Domain.Dto;
 using Microsoft.AspNetCore.Authorization;
@@ -25,6 +27,8 @@ namespace KeJian.Core.Api.Controllers
         [HttpPost("Login")]
         public async Task<string> LoginAsync(LoginInputDto inputDto)
         {
+            Trace.WriteLine(inputDto);
+            Console.WriteLine(inputDto);
             return await _loginApplication.LoginAsync(inputDto);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace KeJian.Core.Application
                 .Where(c => c.Type == type)
                 .Where(c => !c.IsDeleted)
                 .OrderByDescending(_ => _.CreateTime)
-                .Take(count)
+                // .Take(count)
                 .ToListAsync();
         }
 

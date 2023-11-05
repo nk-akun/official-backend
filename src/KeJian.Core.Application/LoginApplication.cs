@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -31,12 +32,15 @@ namespace KeJian.Core.Application
         public async Task<string> LoginAsync(LoginInputDto inputDto)
         {
             inputDto.Password = inputDto.Password.GetMd5();
+            // Console.WriteLine(inputDto.Password);
 
             var user = await _dbContext.User
                 .Where(u => !u.IsDeleted)
                 .Where(u => u.IsAction)
                 .Where(u => u.LoginName == inputDto.LoginName.Trim())
                 .Where(u => u.Password == inputDto.Password.Trim())
+                // .Where(u => u.LoginName == "admin")
+                // .Where(u => u.Password == "18181")
                 .FirstOrDefaultAsync();
 
             if (user == null) throw new StringResponseException("用户名或密码错误！");

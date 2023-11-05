@@ -44,7 +44,7 @@ namespace KeJian.Core.Api.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPost]
         [Authorize]
         public async Task<Enterprise> CreateOrUpdateAsync(Enterprise input)
         {
@@ -56,7 +56,7 @@ namespace KeJian.Core.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpPost("{id}")]
         [Authorize]
         public async Task<bool> DeleteAsync(int id)
         {

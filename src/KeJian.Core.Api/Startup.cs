@@ -39,13 +39,15 @@ namespace KeJian.Core.Api
                 option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(option =>
             {
+                option.IncludeErrorDetails = true;
                 option.RequireHttpsMetadata = false;
-                option.SaveToken = true;
+                option.SaveToken = false;
                 option.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
+                    // ValidateIssuerSigningKey = true,
+                    ValidateIssuerSigningKey = false,
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.Unicode.GetBytes(Configuration.GetSection("JwtSecurityOption:SigningKey").Value)),
                     ValidIssuer = Configuration.GetSection("JwtSecurityOption:Issuer").Value,

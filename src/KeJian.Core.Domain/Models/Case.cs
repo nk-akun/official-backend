@@ -1,12 +1,19 @@
 ﻿using System;
 using KeJian.Core.Library.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KeJian.Core.Domain.Models
 {
     public class Case : Entity
     {
         /// <summary>
-        ///     案例图片
+        ///     案例图片接口值
+        /// </summary>
+        [NotMapped]
+        public string[] Imgs { get; set; }
+
+        /// <summary>
+        ///     案例图片数据库
         /// </summary>
         public string Img { get; set; }
 

@@ -9,11 +9,11 @@ namespace KeJian.Core.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CaseController : ControllerBase
+    public class CasesController : ControllerBase
     {
         private readonly IBaseApplication<Case> _application;
 
-        public CaseController(IBaseApplication<Case> application)
+        public CasesController(IBaseApplication<Case> application)
         {
             _application = application;
         }
@@ -23,6 +23,16 @@ namespace KeJian.Core.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        public async Task<List<Case>> GetAsyncAll()
+        {
+            return await _application.GetAsync();
+        }
+
+        /// <summary>
+        ///     案例列表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("/GetCasesAll")]
         public async Task<List<Case>> GetAsync()
         {
             return await _application.GetAsync();
@@ -33,7 +43,7 @@ namespace KeJian.Core.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("GetCasesById/{id}")]
         public async Task<Case> GetAsync(int id)
         {
             return await _application.GetAsync(id);
@@ -44,7 +54,7 @@ namespace KeJian.Core.Api.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPost]
         [Authorize]
         public async Task<Case> CreateOrUpdateAsync(Case input)
         {
@@ -56,7 +66,7 @@ namespace KeJian.Core.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpPost("{id}")]
         [Authorize]
         public async Task<bool> DeleteAsync(int id)
         {
