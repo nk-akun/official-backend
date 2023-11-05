@@ -9,7 +9,7 @@ namespace KeJian.Core.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    // [Authorize]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IBaseApplication<User> _application;
