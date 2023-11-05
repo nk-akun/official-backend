@@ -15,7 +15,7 @@ namespace KeJian.Core.Api
             return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseUrls("http://0.0.0.0:5001");
+                    webBuilder.UseUrls("http://127.0.0.1:5001");
                     webBuilder.UseStartup<Startup>();
                 });
         }
