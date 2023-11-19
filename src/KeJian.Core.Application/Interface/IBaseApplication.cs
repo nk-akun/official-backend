@@ -7,6 +7,8 @@ namespace KeJian.Core.Application.Interface
     {
         Task<List<TEntity>> GetAsync();
 
+        Task<List<TEntity>> GetAsyncByType(string type);
+
         Task<TEntity> GetAsync(int id);
 
         Task<TEntity> CreateOrUpdateAsync(TEntity input);

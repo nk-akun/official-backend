@@ -15,6 +15,7 @@ namespace KeJian.Core.Application
 
             services.AddTransient<IBaseApplication<User>, UserApplication>();
             services.AddTransient<IBaseApplication<Case>, CaseApplication>();
+            services.AddTransient<IBaseApplication<Product>, ProductApplication>();
             services.AddTransient<IBaseApplication<Course>, CourseApplication>();
             services.AddTransient<IBaseApplication<Enterprise>, EnterpriseApplication>();
             services.AddTransient<IBaseApplication<Honor>, HonorApplication>();

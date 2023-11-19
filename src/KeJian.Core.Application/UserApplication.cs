@@ -67,5 +67,10 @@ namespace KeJian.Core.Application
             var count = await _dbContext.SaveChangesAsync();
             return count > 0;
         }
+
+        public async Task<List<User>> GetAsyncByType(string type)
+        {
+            return new List<User>();
+        }
     }
 }

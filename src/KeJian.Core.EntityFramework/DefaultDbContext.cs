@@ -19,6 +19,8 @@ namespace KeJian.Core.EntityFramework
 
         public DbSet<Case> Case { get; set; }
 
+        public DbSet<Product> Product { get; set; }
+
         public DbSet<Team> Team { get; set; }
 
         public DbSet<Course> Course { get; set; }

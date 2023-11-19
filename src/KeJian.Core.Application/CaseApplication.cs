@@ -67,5 +67,10 @@ namespace KeJian.Core.Application
             _dbContext.Entry(entity).Property(e => e.IsDeleted).IsModified = true;
             return await _dbContext.SaveChangesAsync() > 0;
         }
+
+        public async Task<List<Case>> GetAsyncByType(string type)
+        {
+            return new List<Case>();
+        }
     }
 }

@@ -53,7 +53,7 @@ namespace KeJian.Core.Application
             var key = new SymmetricSecurityKey(Encoding.Unicode.GetBytes(_jwtOption.SigningKey));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var jwtToken = new JwtSecurityToken(_jwtOption.Issuer, _jwtOption.Audience, claims,
-                expires: DateTime.Now.AddMinutes(30), signingCredentials: credentials);
+                expires: DateTime.Now.AddMinutes(480), signingCredentials: credentials);
 
             var token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
 
